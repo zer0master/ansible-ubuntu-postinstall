@@ -1,0 +1,21 @@
+---
+- name: enable command-line ctrl-arrows via inputrc
+  blockinfile:
+    path: /etc/inputrc
+    backup: yes
+    insertbefore: '\$if term=rxvt'
+    marker: "# {mark} ANSIBLE MANAGED_BLOCK"
+    block: |
+      $if term=xterm
+      "\eOC": forward-word
+      "\eOD": backward-word
+      $endif
+      #
+      $if term=linux
+      "\e[C": forward-word
+      "\e[D": backward-word
+      $endif
+      #
+  tags:
+    - adjustterm
+...

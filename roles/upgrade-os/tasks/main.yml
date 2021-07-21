@@ -1,0 +1,31 @@
+# ref: https://www.cyberciti.biz/faq/ansible-apt-update-all-packages-on-ubuntu-debian-linux/
+#
+---
+- name: update apt repo and cache
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+  tags:
+    - upgradepkgs
+
+- name: upgrade all packages
+  apt: upgrade=dist force_apt_get=yes
+  tags:
+    - upgradepkgs
+
+- name: reboot needed?
+  register: found_reboot_required
+  stat: path=/var/run/reboot-required get_md5=no
+  tags:
+    - upgradepkgs
+
+- name: then do it
+  reboot:
+    msg: "Reboot initiated by Ansible for kernel updates"
+    connect_timeout: 10
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 45
+    test_command: uptime
+  when: found_reboot_required.stat.exists
+  tags:
+    - upgradepkgs
+...
