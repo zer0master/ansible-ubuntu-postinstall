@@ -1,0 +1,39 @@
+" more cases using 2 spaces for indentation than not
+autocmd FileType *      set tabstop=2|set shiftwidth=2|set expandtab|set autoindent|set smartindent
+autocmd FileType make   set tabstop=4|set shiftwidth=4|set noexpandtab|set noautoindent
+autocmd FileType python set tabstop=4|set shiftwidth=4
+autocmd FileType sh     set tabstop=4|set shiftwidth=4
+
+" control arrows
+map <ESC>[D <C-Left>
+map <ESC>[C <C-Right>
+map! <ESC>[D <C-Left>
+map! <ESC>[C <C-Right>
+
+" current timestamp
+nmap <F3> i<C-R>=strftime("%FT%Tz")<CR><Esc>
+imap <F3> <C-R>=strftime("%FT%Tz")<CR>
+
+set backspace+=start,eol,indent
+
+" macros to toggle indentation
+"
+function! EnableIndents( ... )
+    set autoindent
+    set smartindent
+endfunction
+
+function! DisableIndents( ... )
+    set noautoindent
+    set nosmartindent
+endfunction
+
+" counterract effect fo smartindent
+inoremap # X<BS>#
+
+" invocations
+"
+map <C-x>i :call EnableIndents()<CR>
+map <C-x>u :call DisableIndents()<CR>
+map <C-x>n :set nu<CR>
+map <C-x>b :set nonu<CR>

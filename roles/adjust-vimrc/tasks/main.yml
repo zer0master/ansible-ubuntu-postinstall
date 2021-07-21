@@ -1,0 +1,27 @@
+---
+- name: enable dark background
+  ansible.builtin.replace:
+    path: /etc/vim/vimrc
+    backup: no
+    regexp: '^"(set background=dark)'
+    replace: '\1'
+  tags:
+    - adjustvim
+
+- name: turn on last position
+  ansible.builtin.replace:
+    path: /etc/vim/vimrc
+    backup: no
+    regexp: '^"(au BufReadPost.+if.+endif)'
+    replace: '\1'
+  tags:
+    - adjustvim
+
+- name: populate vimrc.local content
+  ansible.builtin.copy:
+    src: files/vimrc.local
+    dest: /etc/vim/vimrc.local
+    mode: 0644
+  tags:
+    - adjustvim
+...

@@ -6,7 +6,7 @@ This playbook grew out of a desire to both broaden my ansible knowledge as well 
 
 ## Structure
 The playbook uses a typical roles-driven approach, but the folders for `defaults`, `host_vars`, or `group_vars` all contain empty `main.yml` files that can be customized as conditions warrant. Three roles are provided:
-* `add-vimrc` : convenience settings for vim in `/etc/vimrc`
+* `adjust-vimrc` : convenience settings for vim in `/etc/vimrc`
 * `adjust-term` : control-arrow support for `xterm` and `linux` type
 * `upgrade-os` : typical `apt -y update && apt -y upgrade` behavior
 
@@ -23,7 +23,7 @@ all:
     # other group aliases and hosts optional
 ```
 The following tags are present (corresponding to the roles above):
-* addvimrc
+* adjustvim
 * adjustterm
 * upgradepkgs
 

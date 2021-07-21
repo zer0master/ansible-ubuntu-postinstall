@@ -9,6 +9,6 @@
   become_method: sudo
 
   roles:
-    # role: add-vimrc
+    - role: adjust-vimrc
     - role: adjust-term
     - role: upgrade-os
