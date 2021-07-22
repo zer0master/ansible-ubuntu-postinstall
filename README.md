@@ -28,3 +28,9 @@ The following tags are present (corresponding to the roles above):
 * upgradepkgs
 
 Execute the playbook with `make post-install`; adding `TAGS="(tagname,..)" limits what roles are invoked. Aside from a `help` target, `post-install` is the only other option. 
+
+## TODOs
+Timelines are indeterminate at present:
+* another (external?) role to add additional packages, such as
+  * unzip, p7zip-full, and similar
+  * other utilities?
