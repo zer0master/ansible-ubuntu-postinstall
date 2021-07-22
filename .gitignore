@@ -1,4 +1,6 @@
 *.swp
 .env
-vault
-hosts.yml
+vault*
+hosts*.yml
+# these names are driven by requirements.yml (or equivalent) 'name' keys
+roles/python-pkgs

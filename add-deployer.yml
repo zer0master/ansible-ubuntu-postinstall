@@ -1,15 +1,13 @@
 ---
-- hosts: agents
+- hosts: target
   remote_user: root
   vars:
     ansible_become_pass: "{{ ansible_ssh_pass }}"
   vars_files:
-    - vault
+    - vault-interim
   become: yes
   become_method: sudo
 
   roles:
-    - role: adjust-vimrc
-    - role: adjust-term
-    - role: upgrade-os
-    - role: python-pkgs
+    - role: add-deployer
+      target_user: deploy
