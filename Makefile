@@ -13,12 +13,21 @@ endif
 	post-install
 
 
-post-install:
+post-install: add-deployer
 	ansible-playbook $(TAGOPT) \
 		-vv \
 		--inventory hosts.yml \
 		--vault-password-file ${VAULT_PASSWD_FILE} \
 		site.yml
+
+# uses a separate "bootstrap" vault file with the failsafe user; probably could be combined with original with
+# sensible naming
+add-deployer:
+	ansible-playbook $(TAGOPT) \
+		-vv \
+		--inventory hosts-interim.yml \
+		--vault-password-file ${VAULT_PASSWD_FILE} \
+		add-deployer.yml
 
 # show available targets
 help:

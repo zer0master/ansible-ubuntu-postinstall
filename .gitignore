@@ -1,4 +1,4 @@
 *.swp
 .env
-vault
-hosts.yml
+vault*
+hosts*.yml

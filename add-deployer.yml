@@ -1,0 +1,13 @@
+---
+- hosts: target
+  remote_user: root
+  vars:
+    ansible_become_pass: "{{ ansible_ssh_pass }}"
+  vars_files:
+    - vault-interim
+  become: yes
+  become_method: sudo
+
+  roles:
+    - role: add-deployer
+      target_user: deploy
