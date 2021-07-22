@@ -1,0 +1,5 @@
+---
+- name: python-pkgs
+  src: https://github.com/zer0master/ansible-python-setup.git
+  scm: git
+...

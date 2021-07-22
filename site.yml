@@ -1,5 +1,5 @@
 ---
-- hosts: jenkins
+- hosts: agents
   remote_user: root
   vars:
     ansible_become_pass: "{{ ansible_ssh_pass }}"
@@ -12,3 +12,4 @@
     - role: adjust-vimrc
     - role: adjust-term
     - role: upgrade-os
+    - role: python-pkgs
